@@ -1,0 +1,61 @@
+<?php
+
+declare(strict_types=1);
+
+/** @var \Dlabsit\Core\Block\Adminhtml\Support $block */
+$report = $block->getSystemReport();
+?>
+<div class="dlabsit-dashboard">
+    <div class="dlabsit-header">
+        <img src="<?= $block->escapeUrl($block->getViewFileUrl('Dlabsit_Core::images/logo.svg')) ?>"
+             alt="Dlabsit" class="dlabsit-logo"/>
+        <div>
+            <h1><?= $block->escapeHtml(__('Dlabsit Support')) ?></h1>
+            <p class="dlabsit-subtitle">
+                <?= $block->escapeHtml(__('Contact and diagnostic tools')) ?>
+            </p>
+        </div>
+    </div>
+
+    <div class="dlabsit-card">
+        <h2><?= $block->escapeHtml(__('Contact')) ?></h2>
+        <ul class="dlabsit-links">
+            <li>
+                <strong><?= $block->escapeHtml(__('Email')) ?>:</strong>
+                <a href="mailto:<?= $block->escapeHtmlAttr($block->getSupportEmail()) ?>">
+                    <?= $block->escapeHtml($block->getSupportEmail()) ?>
+                </a>
+            </li>
+            <li>
+                <strong><?= $block->escapeHtml(__('Documentation')) ?>:</strong>
+                <a href="<?= $block->escapeUrl($block->getDocumentationUrl()) ?>" target="_blank" rel="noopener">
+                    <?= $block->escapeHtml($block->getDocumentationUrl()) ?>
+                </a>
+            </li>
+            <li>
+                <strong><?= $block->escapeHtml(__('Issue Tracker')) ?>:</strong>
+                <a href="<?= $block->escapeUrl($block->getIssueTrackerUrl()) ?>" target="_blank" rel="noopener">
+                    <?= $block->escapeHtml($block->getIssueTrackerUrl()) ?>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="dlabsit-card">
+        <h2><?= $block->escapeHtml(__('System Report')) ?></h2>
+        <p class="dlabsit-muted">
+            <?= $block->escapeHtml(__('Copy the report below and include it in any support request.')) ?>
+        </p>
+        <textarea id="dlabsit-system-report" readonly rows="14"
+                  onclick="this.select()"><?= $block->escapeHtml($report) ?></textarea>
+        <button type="button" class="action-primary" onclick="
+            var ta = document.getElementById('dlabsit-system-report');
+            ta.select();
+            document.execCommand('copy');
+            this.textContent = '<?= $block->escapeJs(__('Copied!')->render()) ?>';
+            setTimeout(() => this.textContent = '<?= $block->escapeJs(__('Copy to Clipboard')->render()) ?>', 2000);
+        ">
+            <span><?= $block->escapeHtml(__('Copy to Clipboard')) ?></span>
+        </button>
+    </div>
+</div>

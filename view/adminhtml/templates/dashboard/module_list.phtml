@@ -1,0 +1,95 @@
+<?php
+
+declare(strict_types=1);
+
+/** @var \Dlabsit\Core\Block\Adminhtml\Dashboard\ModuleList $block */
+$modules = $block->getModules();
+?>
+<div class="dlabsit-dashboard">
+    <div class="dlabsit-header">
+        <img src="<?= $block->escapeUrl($block->getViewFileUrl('Dlabsit_Core::images/logo.svg')) ?>"
+             alt="Dlabsit" class="dlabsit-logo"/>
+        <div>
+            <h1><?= $block->escapeHtml(__('Dlabsit Dashboard')) ?></h1>
+            <p class="dlabsit-subtitle">
+                <?= $block->escapeHtml(__('Overview of all installed Dlabsit extensions')) ?>
+            </p>
+        </div>
+    </div>
+
+    <div class="dlabsit-env-badge">
+        <?= $block->escapeHtml(__(
+            'Magento %1 · PHP %2',
+            $block->getMagentoEdition(),
+            PHP_VERSION
+        )) ?>
+    </div>
+
+    <?php if (empty($modules)): ?>
+        <p class="dlabsit-empty"><?= $block->escapeHtml(__('No Dlabsit modules registered yet.')) ?></p>
+    <?php else: ?>
+        <table class="data-grid dlabsit-modules-table">
+            <thead>
+                <tr>
+                    <th><?= $block->escapeHtml(__('Module')) ?></th>
+                    <th><?= $block->escapeHtml(__('Version')) ?></th>
+                    <th><?= $block->escapeHtml(__('PHP')) ?></th>
+                    <th><?= $block->escapeHtml(__('Magento')) ?></th>
+                    <th><?= $block->escapeHtml(__('License')) ?></th>
+                    <th><?= $block->escapeHtml(__('Links')) ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($modules as $module):
+                    $php = $block->getPhpStatus($module);
+                    $magento = $block->getMagentoStatus($module);
+                    $license = $block->getLicenseStatus($module);
+                ?>
+                <tr>
+                    <td>
+                        <strong><?= $block->escapeHtml($module->getName()) ?></strong><br/>
+                        <small class="dlabsit-muted"><?= $block->escapeHtml($module->getDescription()) ?></small>
+                    </td>
+                    <td><code><?= $block->escapeHtml($module->getVersion()) ?></code></td>
+                    <td style="color:<?= $block->escapeHtmlAttr($php['color']) ?>">
+                        <?= $block->escapeHtml($php['label']) ?><br/>
+                        <small><?= $block->escapeHtml($php['current']) ?> / ≥ <?= $block->escapeHtml($php['required']) ?></small>
+                    </td>
+                    <td style="color:<?= $block->escapeHtmlAttr($magento['color']) ?>">
+                        <?= $block->escapeHtml($magento['label']) ?><br/>
+                        <small><?= $block->escapeHtml($magento['current']) ?> / ≥ <?= $block->escapeHtml($magento['required']) ?></small>
+                    </td>
+                    <td>
+                        <?= $block->escapeHtml($license['message']) ?>
+                    </td>
+                    <td>
+                        <?php $configUrl = $block->getConfigUrl($module); ?>
+                        <?php if ($configUrl): ?>
+                            <a href="<?= $block->escapeUrl($configUrl) ?>" class="dlabsit-action">
+                                <?= $block->escapeHtml(__('Configure')) ?>
+                            </a>
+                            <br/>
+                        <?php endif; ?>
+                        <?php if ($module->getRepositoryUrl()): ?>
+                            <a href="<?= $block->escapeUrl($module->getRepositoryUrl()) ?>" target="_blank" rel="noopener">
+                                <?= $block->escapeHtml(__('Repo')) ?>
+                            </a>
+                        <?php endif; ?>
+                        <?php if ($module->getDocumentationUrl()): ?>
+                            · <a href="<?= $block->escapeUrl($module->getDocumentationUrl()) ?>" target="_blank" rel="noopener">
+                                <?= $block->escapeHtml(__('Docs')) ?>
+                            </a>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
+
+    <div class="dlabsit-footer">
+        <small>
+            <?= $block->escapeHtml(__('Powered by Dlabsit · All modules registered via Dlabsit_Core')) ?>
+        </small>
+    </div>
+</div>

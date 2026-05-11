@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Dlabsit_Core::dlabsit"
+             title="Dlabsit"
+             module="Dlabsit_Core"
+             sortOrder="65"
+             resource="Dlabsit_Core::dlabsit"/>
+
+        <!--
+            IMPORTANT: Menu IDs use a 'dlabsit_' prefix so the rendered CSS class
+            becomes "item-dlabsit-dashboard" / "item-dlabsit-about" / "item-dlabsit-support".
+            This avoids collision with Magento's GLOBAL .item-dashboard /
+            .item-about CSS rules in vendor/magento-backend's _menu.less which
+            apply icon fonts via ::before. Without the prefix, our submenu items
+            inherit Magento's dashboard icon character — visible as a stray
+            "blokje" before the menu label.
+        -->
+        <add id="Dlabsit_Core::dlabsit_dashboard"
+             title="Dashboard"
+             module="Dlabsit_Core"
+             sortOrder="10"
+             parent="Dlabsit_Core::dlabsit"
+             action="dlabsit/dashboard/index"
+             resource="Dlabsit_Core::dashboard"/>
+
+        <add id="Dlabsit_Core::dlabsit_about"
+             title="About Dlabsit"
+             module="Dlabsit_Core"
+             sortOrder="20"
+             parent="Dlabsit_Core::dlabsit"
+             action="dlabsit/about/index"
+             resource="Dlabsit_Core::about"/>
+
+        <add id="Dlabsit_Core::dlabsit_support"
+             title="Support"
+             module="Dlabsit_Core"
+             sortOrder="30"
+             parent="Dlabsit_Core::dlabsit"
+             action="dlabsit/support/index"
+             resource="Dlabsit_Core::support"/>
+    </menu>
+</config>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Dlabsit\Core\Api\ModuleRegistryInterface"
+                type="Dlabsit\Core\Model\ModuleRegistry"/>
+    <preference for="Dlabsit\Core\Api\ModuleInfoInterface"
+                type="Dlabsit\Core\Model\ModuleInfo"/>
+    <preference for="Dlabsit\Core\Api\LicenseValidatorInterface"
+                type="Dlabsit\Core\Model\License\NullValidator"/>
+
+    <!-- Register Dlabsit_Core itself -->
+    <type name="Dlabsit\Core\Model\ModuleRegistry">
+        <arguments>
+            <argument name="modules" xsi:type="array">
+                <item name="core" xsi:type="array">
+                    <item name="code" xsi:type="string">core</item>
+                    <item name="name" xsi:type="string">Dlabsit Core</item>
+                    <item name="description" xsi:type="string">Central hub for all Dlabsit Magento 2 extensions. Provides branding, module registry, compatibility matrix, and licensing.</item>
+                    <item name="version" xsi:type="string">1.0.0</item>
+                    <item name="composer_name" xsi:type="string">dlabsit/module-core</item>
+                    <item name="license_tier" xsi:type="string">free</item>
+                    <item name="min_php_version" xsi:type="string">8.2</item>
+                    <item name="min_magento_version" xsi:type="string">2.4.7</item>
+                    <item name="repository_url" xsi:type="string">https://github.com/dlabsit/m2-core</item>
+                    <item name="documentation_url" xsi:type="string">https://github.com/dlabsit/m2-core#readme</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <!--
+            Dlabsit_Core does not define its own tab; each Dlabsit_* module declares
+            its own tab named "Dlabsit - {Module Name}" so that each module
+            occupies one expandable group in the Stores -> Configuration
+            left sidebar (the closest to nested tabs that Magento allows —
+            true nested tabs are not supported by the system.xml schema).
+        -->
+    </system>
+</config>

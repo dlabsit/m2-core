@@ -1,0 +1,36 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined method Magento\\\\Framework\\\\Controller\\\\ResultInterface\\:\\:getConfig\\(\\)\\.$#"
+			count: 1
+			path: Controller/Adminhtml/About/Index.php
+
+		-
+			message: "#^Call to an undefined method Magento\\\\Framework\\\\Controller\\\\ResultInterface\\:\\:setActiveMenu\\(\\)\\.$#"
+			count: 1
+			path: Controller/Adminhtml/About/Index.php
+
+		-
+			message: "#^Method Dlabsit\\\\Core\\\\Controller\\\\Adminhtml\\\\About\\\\Index\\:\\:execute\\(\\) should return Magento\\\\Framework\\\\View\\\\Result\\\\Page but returns Magento\\\\Framework\\\\Controller\\\\ResultInterface\\.$#"
+			count: 1
+			path: Controller/Adminhtml/About/Index.php
+
+		-
+			message: "#^Call to an undefined method Magento\\\\Framework\\\\View\\\\Result\\\\Page\\:\\:setActiveMenu\\(\\)\\.$#"
+			count: 1
+			path: Controller/Adminhtml/Dashboard/Index.php
+
+		-
+			message: "#^Call to an undefined method Magento\\\\Framework\\\\Controller\\\\ResultInterface\\:\\:getConfig\\(\\)\\.$#"
+			count: 1
+			path: Controller/Adminhtml/Support/Index.php
+
+		-
+			message: "#^Call to an undefined method Magento\\\\Framework\\\\Controller\\\\ResultInterface\\:\\:setActiveMenu\\(\\)\\.$#"
+			count: 1
+			path: Controller/Adminhtml/Support/Index.php
+
+		-
+			message: "#^Method Dlabsit\\\\Core\\\\Controller\\\\Adminhtml\\\\Support\\\\Index\\:\\:execute\\(\\) should return Magento\\\\Framework\\\\View\\\\Result\\\\Page but returns Magento\\\\Framework\\\\Controller\\\\ResultInterface\\.$#"
+			count: 1
+			path: Controller/Adminhtml/Support/Index.php

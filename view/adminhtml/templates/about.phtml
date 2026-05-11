@@ -1,0 +1,58 @@
+<?php
+
+declare(strict_types=1);
+
+/** @var \Dlabsit\Core\Block\Adminhtml\About $block */
+?>
+<div class="dlabsit-dashboard">
+    <div class="dlabsit-header">
+        <img src="<?= $block->escapeUrl($block->getViewFileUrl('Dlabsit_Core::images/logo.svg')) ?>"
+             alt="Dlabsit" class="dlabsit-logo"/>
+        <div>
+            <h1><?= $block->escapeHtml($block->getCompanyName()) ?></h1>
+            <p class="dlabsit-subtitle"><?= $block->escapeHtml($block->getCompanyTagline()) ?></p>
+        </div>
+    </div>
+
+    <div class="dlabsit-card">
+        <h2><?= $block->escapeHtml(__('About')) ?></h2>
+        <p><?= $block->escapeHtml($block->getCompanyDescription()) ?></p>
+    </div>
+
+    <div class="dlabsit-card">
+        <h2><?= $block->escapeHtml(__('Links')) ?></h2>
+        <ul class="dlabsit-links">
+            <li>
+                <strong><?= $block->escapeHtml(__('Website')) ?>:</strong>
+                <a href="<?= $block->escapeUrl($block->getCompanyUrl()) ?>" target="_blank" rel="noopener">
+                    <?= $block->escapeHtml($block->getCompanyUrl()) ?>
+                </a>
+            </li>
+            <li>
+                <strong><?= $block->escapeHtml(__('GitHub')) ?>:</strong>
+                <a href="<?= $block->escapeUrl($block->getGithubOrganization()) ?>" target="_blank" rel="noopener">
+                    <?= $block->escapeHtml($block->getGithubOrganization()) ?>
+                </a>
+            </li>
+            <li>
+                <strong><?= $block->escapeHtml(__('Support')) ?>:</strong>
+                <a href="mailto:<?= $block->escapeHtmlAttr($block->getSupportEmail()) ?>">
+                    <?= $block->escapeHtml($block->getSupportEmail()) ?>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="dlabsit-card">
+        <h2><?= $block->escapeHtml(__('Installed Modules')) ?></h2>
+        <ul class="dlabsit-modules">
+            <?php foreach ($block->getModules() as $m): ?>
+                <li>
+                    <strong><?= $block->escapeHtml($m->getName()) ?></strong>
+                    <code><?= $block->escapeHtml($m->getVersion()) ?></code>
+                    <span class="dlabsit-muted">— <?= $block->escapeHtml($m->getComposerName()) ?></span>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+/**
+ * Dlabsit Core — admin menu customization
+ *
+ * Top-level "Dlabsit" menu: hide text label, show only the logo, vertically &
+ * horizontally centered using flexbox. Active/hover state inverts colors
+ * so the icon stays legible on the dark highlight background.
+ *
+ * Submenu items use a "dlabsit_" prefix in their menu IDs to AVOID the
+ * .item-dashboard / .item-about CSS class collision with Magento's
+ * built-in icon rules (Magento_Backend/_menu.less). With that prefix
+ * the rendered class is "item-dlabsit-dashboard" — no collision.
+ */
+
+/* Top-level Dlabsit menu: flexbox so the icon is vertically + horizontally centered */
+.admin__menu #menu-dlabsit-core-dlabsit > a,
+#menu-dlabsit-core-dlabsit > a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0 !important;       /* hide "Dlabsit" text */
+    line-height: 1 !important;
+    padding: 0 !important;
+    height: 100%;
+    min-height: 56px;
+}
+
+/* Hide the <span>Dlabsit</span> text node entirely so flex centers the ::before */
+.admin__menu #menu-dlabsit-core-dlabsit > a > span,
+#menu-dlabsit-core-dlabsit > a > span {
+    display: none !important;
+}
+
+.admin__menu #menu-dlabsit-core-dlabsit > a:before,
+#menu-dlabsit-core-dlabsit > a:before {
+    content: '' !important;
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 40px;
+    height: 40px;
+    /* SVG: viewBox 0..100, rect rounded, "Dlabsit" baseline at y=68 for 44px font */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="%23ffffff"/><text x="50" y="68" font-family="system-ui,sans-serif" font-size="44" font-weight="800" fill="%231e293b" text-anchor="middle">Dlabsit</text></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    font-family: inherit;
+}
+
+/* Active / hover: invert so icon stays legible on dark highlight background */
+.admin__menu #menu-dlabsit-core-dlabsit._active > a:before,
+.admin__menu #menu-dlabsit-core-dlabsit:hover > a:before,
+#menu-dlabsit-core-dlabsit._active > a:before,
+#menu-dlabsit-core-dlabsit:hover > a:before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="%231e293b"/><text x="50" y="68" font-family="system-ui,sans-serif" font-size="44" font-weight="800" fill="%23ffffff" text-anchor="middle">Dlabsit</text></svg>');
+}
+
+/*
+ * Belt-and-suspenders: even with the dlabsit_ prefix in menu IDs, force-hide
+ * any ::before / ::after that some custom theme might inject on submenu items.
+ */
+.admin__menu .submenu li[id^="menu-dlabsit-core-dlabsit_"] > a:before,
+.admin__menu .submenu li[id^="menu-dlabsit-core-dlabsit_"] > a:after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+}

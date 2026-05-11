@@ -1,0 +1,18 @@
+{
+    "name": "dlabsit/module-core",
+    "description": "Dlabsit Core — required base module for all Dlabsit_* Magento 2 extensions. Provides admin branding, module registry, compatibility checks, update notifications, and license validation.",
+    "type": "magento2-module",
+    "license": "OSL-3.0",
+    "version": "1.0.0",
+    "require": {
+        "php": ">=8.2",
+        "magento/framework": ">=103.0.0"
+    },
+    "autoload": {
+        "files": ["registration.php"],
+        "psr-4": {
+            "Dlabsit\\Core\\": ""
+        }
+    },
+    "keywords": ["magento", "magento2", "dlabsit", "core"]
+}
