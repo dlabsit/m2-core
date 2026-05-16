@@ -39,7 +39,7 @@
     width: 40px;
     height: 40px;
     /* SVG: viewBox 0..100, rect rounded, "Dlabsit" baseline at y=68 for 44px font */
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="%23ffffff"/><text x="50" y="68" font-family="system-ui,sans-serif" font-size="44" font-weight="800" fill="%231e293b" text-anchor="middle">Dlabsit</text></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="%23ffffff"/><text x="50" y="72" font-family="system-ui,sans-serif" font-size="56" font-weight="800" fill="%231e293b" text-anchor="middle">DL</text></svg>');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -51,7 +51,7 @@
 .admin__menu #menu-dlabsit-core-dlabsit:hover > a:before,
 #menu-dlabsit-core-dlabsit._active > a:before,
 #menu-dlabsit-core-dlabsit:hover > a:before {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="%231e293b"/><text x="50" y="68" font-family="system-ui,sans-serif" font-size="44" font-weight="800" fill="%23ffffff" text-anchor="middle">Dlabsit</text></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="%231e293b"/><text x="50" y="72" font-family="system-ui,sans-serif" font-size="56" font-weight="800" fill="%23ffffff" text-anchor="middle">DL</text></svg>');
 }
 
 /*
