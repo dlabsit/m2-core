@@ -45,13 +45,13 @@ class About extends Template
     public function getCompanyUrl(): string
     {
         // {{COMPANY_URL_PLACEHOLDER}}
-        return 'https://dlabsit.example';
+        return 'https://dlabsit.nl';
     }
 
     public function getSupportEmail(): string
     {
         // {{SUPPORT_EMAIL_PLACEHOLDER}}
-        return 'support@dlabsit.example';
+        return 'support@dlabsit.nl';
     }
 
     public function getGithubOrganization(): string

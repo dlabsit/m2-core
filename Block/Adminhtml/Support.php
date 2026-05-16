@@ -29,7 +29,7 @@ class Support extends Template
     public function getSupportEmail(): string
     {
         // {{SUPPORT_EMAIL_PLACEHOLDER}}
-        return 'support@dlabsit.example';
+        return 'support@dlabsit.nl';
     }
 
     public function getDocumentationUrl(): string
