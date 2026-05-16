@@ -81,13 +81,13 @@ abstract class InfoBanner extends Field
             <div style="display: flex; align-items: flex-start; gap: 16px;">
                 <svg width="56" height="56" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
                     <rect width="100" height="100" rx="20" fill="#1e293b"/>
-                    <text x="50" y="68" font-family="system-ui,sans-serif"
-                          font-size="44" font-weight="800" fill="#ffffff" text-anchor="middle">Dlabsit</text>
+                    <text x="50" y="72" font-family="system-ui,sans-serif"
+                          font-size="56" font-weight="800" fill="#ffffff" text-anchor="middle">DL</text>
                 </svg>
                 <div style="flex-grow: 1;">
                     <div style="font-size: 16px; font-weight: 600; color: #1e293b;">
                         {$name} <span style="color: #64748b; font-weight: 400;">v{$version}</span>
-                        <span style="background: #1e293b; color: #fff; padding: 2px 8px; border-radius: 3px; font-size: 11px; margin-left: 8px;">by Dlabsit</span>
+                        <a href="https://dlabsit.nl" target="_blank" rel="noopener" style="background: #1e293b; color: #fff; padding: 2px 8px; border-radius: 3px; font-size: 11px; margin-left: 8px; text-decoration: none;">by Dlabsit</a>
                     </div>
                     <div style="color: #475569; font-size: 13px; margin-top: 6px;">{$description}</div>
                     <div style="margin-top: 10px; font-size: 12px; color: #475569;">

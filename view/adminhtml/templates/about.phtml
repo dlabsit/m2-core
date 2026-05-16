@@ -6,8 +6,10 @@ declare(strict_types=1);
 ?>
 <div class="dlabsit-dashboard">
     <div class="dlabsit-header">
-        <img src="<?= $block->escapeUrl($block->getViewFileUrl('Dlabsit_Core::images/logo.svg')) ?>"
-             alt="Dlabsit" class="dlabsit-logo"/>
+        <a href="https://dlabsit.nl" target="_blank" rel="noopener">
+            <img src="<?= $block->escapeUrl($block->getViewFileUrl('Dlabsit_Core::images/logo.svg')) ?>"
+                 alt="Dlabsit" class="dlabsit-logo"/>
+        </a>
         <div>
             <h1><?= $block->escapeHtml($block->getCompanyName()) ?></h1>
             <p class="dlabsit-subtitle"><?= $block->escapeHtml($block->getCompanyTagline()) ?></p>
