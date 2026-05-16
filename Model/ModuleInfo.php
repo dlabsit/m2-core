@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Dlabsit\Core\Model;
 
+use Composer\InstalledVersions;
 use Dlabsit\Core\Api\ModuleInfoInterface;
 use Magento\Framework\DataObject;
 
@@ -28,9 +29,34 @@ class ModuleInfo extends DataObject implements ModuleInfoInterface
         return (string) $this->getData('description');
     }
 
+    /**
+     * Resolve version dynamically from Composer's installed metadata so the
+     * dashboard always matches the package actually deployed. The "version"
+     * data key remains as an explicit override for unit tests or unusual
+     * installs where Composer metadata is unavailable.
+     */
     public function getVersion(): string
     {
-        return (string) $this->getData('version');
+        $explicit = (string) $this->getData('version');
+        if ($explicit !== '') {
+            return $explicit;
+        }
+
+        $composerName = $this->getComposerName();
+        if ($composerName !== '' && class_exists(InstalledVersions::class)) {
+            try {
+                if (InstalledVersions::isInstalled($composerName)) {
+                    $pretty = InstalledVersions::getPrettyVersion($composerName);
+                    if ($pretty !== null && $pretty !== '') {
+                        return $pretty;
+                    }
+                }
+            } catch (\OutOfBoundsException $e) {
+                // Package not registered with composer (manual install in app/code).
+            }
+        }
+
+        return 'unknown';
     }
 
     public function getComposerName(): string
