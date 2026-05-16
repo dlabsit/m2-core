@@ -16,7 +16,6 @@
                     <item name="code" xsi:type="string">core</item>
                     <item name="name" xsi:type="string">Dlabsit Core</item>
                     <item name="description" xsi:type="string">Central hub for all Dlabsit Magento 2 extensions. Provides branding, module registry, compatibility matrix, and licensing.</item>
-                    <item name="version" xsi:type="string">1.0.0</item>
                     <item name="composer_name" xsi:type="string">dlabsit/module-core</item>
                     <item name="license_tier" xsi:type="string">free</item>
                     <item name="min_php_version" xsi:type="string">8.2</item>
